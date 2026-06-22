@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<!--<PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>-->
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+
+
+		<PublishSingleFile>true</PublishSingleFile>
+		<!--<PublishReadyToRun>true</PublishReadyToRun>-->
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<!--<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>-->
+		
+		<!--<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>-->
+		<ApplicationIcon>cmdNet.ico</ApplicationIcon>
+	
+		
+	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+	  <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
+	  <PackageReference Include="EPPlus" Version="8.6.0" />
+	  <PackageReference Include="PdfPig" Version="0.1.11" />
+	  <PackageReference Include="SharpCompress" Version="0.49.1" />
+	  <PackageReference Include="System.DirectoryServices" Version="10.0.8" />
+		
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="cmdNet.ico">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>
+<!--no dot net add-->
+<!--dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true -p:SelfContained=false -o publish-->
+
+<!--dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true -p:SelfContained=false -p:EnableCompressionInSingleFile=false -p:IncludeNativeLibrariesForSelfExtract=true  -p:IncludeNativeLibrariesForSelfExtract=false -o publish_final2-->
