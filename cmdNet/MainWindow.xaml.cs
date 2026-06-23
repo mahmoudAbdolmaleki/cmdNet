@@ -30,7 +30,7 @@ namespace cmdNet
     {
         private const string LowerChars = "abcdefghjkmnpqstuvwxyz";
         private const string UpperChars = "ABCDEFGHJKMNPQRSTUVWXYZ";
-        private const string DigitChars = "123456789";
+        private const string DigitChars = "23456789";
         private const string SpecialChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
         public ObservableCollection<CommandItem> CommandItems { get; set; } = new ObservableCollection<CommandItem>();
 
@@ -40,7 +40,7 @@ namespace cmdNet
         public MainWindow()
         {
             InitializeComponent();
-            comQuery.SelectedIndex = 0;
+          
             LengthLabel.Content = ((int)LengthSlider.Value).ToString();
 
             // پر کردن لیست از روی دیکشنری
@@ -50,7 +50,8 @@ namespace cmdNet
             }
             comQuery.ItemsSource = CommandItems; // به جای allCommands
             comQuery.DisplayMemberPath = "Command";
-            comQuery.SelectedIndex = 0;
+           
+           comQuery.SelectedIndex =-1;
 
 
         }
@@ -107,51 +108,7 @@ namespace cmdNet
         }
 
 
-        Dictionary<string, string> commandDescriptions = new Dictionary<string, string>
-{
-    // اطلاعات کلی سیستم و شبکه
-    { "ipconfig", "نمایش تنظیمات IP، آدرس MAC، Gateway و DNS سیستم." },
-    { "ipconfig /all", "نمایش کامل تنظیمات شبکه شامل DHCP، DNS، آدرس‌های MAC و بیشتر." },
-    { "ipconfig /release", "آزاد کردن آدرس IP فعلی از DHCP." },
-    { "ipconfig /renew", "درخواست مجدد آدرس IP از DHCP." },
-    { "ipconfig /flushdns", "پاک کردن کش DNS برای رفع خطاهای باز نشدن وب‌سایت‌ها." },
-    { "ipconfig /displaydns", "نمایش محتویات کش DNS (آی‌پی‌های ذخیره‌شده)." },
-
-    // ابزارهای شبکه
-    { "ping google.com", "تست اتصال به سرور گوگل و بررسی پاسخ‌دهی شبکه." },
-    { "tracert 8.8.8.8", "نمایش مسیر بسته‌ها تا رسیدن به سرور 8.8.8.8 (DNS گوگل)." },
-    { "nslookup bing.com", "بررسی آدرس IP دامنه bing.com از طریق DNS." },
-    { "arp -a", "نمایش جدول ARP شامل آدرس‌های MAC و IP دستگاه‌های متصل." },
-    { "route print", "نمایش جدول مسیریابی سیستم و مسیرهای شبکه." },
-
-    // دستورات netsh (با ادغام توضیحات)
-    { "netsh winsock reset", "ریست Winsock برای رفع اختلالات اتصال اینترنت و خطاهای نرم‌افزاری (نیاز به ریستارت)." },
-    { "netsh int ip reset", "ریست کامل TCP/IP و استک (پشته) شبکه به حالت اولیه (نیاز به ریستارت)." },
-    { "netsh int ipv4 reset", "بازنشانی اختصاصی پروتکل IPv4 (نیاز به ریستارت)." },
-    { "netsh int ipv6 reset", "بازنشانی اختصاصی پروتکل IPv6 (نیاز به ریستارت)." },
-    { "netsh advfirewall reset", "بازنشانی فایروال ویندوز به تنظیمات کارخانه." },
-    { "netsh interface ip show config", "نمایش تنظیمات آی‌پی تمام کارت‌های شبکه." },
-    { "netsh wlan show profile", "نمایش پروفایل‌های وای‌فای ذخیره‌شده در سیستم." },
-
-    // netstat و اطلاعات اتصالات
-    { "netstat", "نمایش اتصالات شبکه فعلی، ممکن است کند باشد." },
-    { "netstat -an", "نمایش تمام اتصالات و پورت‌ها به‌صورت عددی بدون تبدیل DNS." },
-    { "netstat -b", "نمایش برنامه‌هایی که از پورت‌ها استفاده می‌کنند (نیاز به دسترسی ادمین)." },
-    { "netstat -o", "نمایش شناسه پردازش (PID) برای هر اتصال." },
-    { "netstat -n", "نمایش آدرس‌ها بدون تبدیل به نام دامنه." },
-    { "netstat -r", "نمایش جدول مسیریابی سیستم (Route Table)." },
-    { "netstat -s", "نمایش آمار پروتکل‌های شبکه مانند TCP، UDP، ICMP." },
-    { "netstat -e", "نمایش آمار Ethernet شامل تعداد بسته‌ها، خطاها و غیره." },
-    { "netstat -an | find \"ESTABLISHED\"", "فیلتر اتصالات فعال که در وضعیت ESTABLISHED هستند." },
-    { "netstat -an | find \"LISTEN\"", "نمایش پورت‌هایی که در حالت LISTEN هستند." },
-    { "netstat -an | find \":80\"", "نمایش اتصالات روی پورت 80 (HTTP)." },
-    { "netstat -an | find \":443\"", "نمایش اتصالات روی پورت 443 (HTTPS)." },
-
-    // اطلاعات سیستمی
-    { "getmac", "نمایش آدرس MAC کارت‌های شبکه سیستم." },
-    { "hostname", "نمایش نام کامپیوتر فعلی." },
-    { "systeminfo", "نمایش اطلاعات کامل سیستم شامل نسخه ویندوز، شبکه و سخت‌افزار." }
-};
+      
 
         //private void Window_Loaded(object sender, RoutedEventArgs e)
         //{
@@ -290,10 +247,8 @@ namespace cmdNet
             query = insertQuery.Text;
             if (string.IsNullOrWhiteSpace(query))
             {
-                if (comQuery.SelectedItem is ComboBoxItem item)
-                    query = item.Content.ToString();
-                else if (comQuery.SelectedItem is string str)
-                    query = str;
+                
+                query = comQuery.Text;
 
                 // اگر هنوز null بود، مقدار پیش‌فرض بده
                 if (string.IsNullOrWhiteSpace(query))
@@ -629,7 +584,7 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
         {
             if (title == "")
                 title = query;
-            var expander = AddPendingOutput($"✅ نتیجه: {title}", Colors.DarkBlue, stackPanelPrint);
+            var expander = AddPendingOutput($"✅ result: {title}", Colors.DarkBlue, stackPanelPrint);
 
             try
             {
@@ -663,7 +618,7 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
         {
             if (title == "")
                 title = word;
-            var expander = AddPendingOutput($"✅ نتیجه: {title}", Colors.DarkBlue, stackPanelPrint);
+            var expander = AddPendingOutput($"✅ result: {title}", Colors.DarkBlue, stackPanelPrint);
 
             try
             {
