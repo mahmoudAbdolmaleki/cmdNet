@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- عنوان و برچسب‌ها -->
+  <data name="Btn_CmdTabHeader" xml:space="preserve">
+    <value>مدیریت شبکه</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>مدیریت شبکه cmdNet</value>
+  </data>
+  <data name="Btn_Run" xml:space="preserve">
+    <value>اجرا</value>
+  </data>
+  <data name="Btn_Persian" xml:space="preserve">
+    <value>فارسی</value>
+  </data>
+  <data name="Btn_English" xml:space="preserve">
+    <value>انگلیسی</value>
+  </data>
+  <data name="Btn_Clear" xml:space="preserve">
+    <value>پاک‌کن</value>
+  </data>
+  <data name="Btn_ShowWifi" xml:space="preserve">
+    <value>نمایش رمز وای‌فای</value>
+  </data>
+  <data name="Lbl_InsertCommand" xml:space="preserve">
+    <value>دستور را وارد کنید</value>
+  </data>
+  <data name="Description_Prefix" xml:space="preserve">
+    <value>توضیح:</value>
+  </data>
+  <data name="Description_Default" xml:space="preserve">
+    <value>توضیحی برای این دستور موجود نیست.</value>
+  </data>
+  <data name="Search_TabHeader" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="Password_TabHeader" xml:space="preserve">
+    <value>تولید رمز</value>
+  </data>
+  <data name="Other_TabHeader" xml:space="preserve">
+    <value>سایر</value>
+  </data>
+  <data name="Btn_Search" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="Btn_ClearSearch" xml:space="preserve">
+    <value>پاک‌کن</value>
+  </data>
+  <data name="Search_InsertWordLabel" xml:space="preserve">
+    <value>کلمه مورد نظر را وارد کنید</value>
+  </data>
+  <data name="Search_SubDirLabel" xml:space="preserve">
+    <value>زیرپوشه‌ها</value>
+  </data>
+  <data name="Search_DocxLabel" xml:space="preserve">
+    <value>.docx</value>
+  </data>
+  <data name="Search_PdfLabel" xml:space="preserve">
+    <value>.pdf</value>
+  </data>
+  <data name="Search_TxtLabel" xml:space="preserve">
+    <value>.txt</value>
+  </data>
+  <data name="Password_LengthLabel" xml:space="preserve">
+    <value>طول رمز:</value>
+  </data>
+  <data name="Password_CharTypesLabel" xml:space="preserve">
+    <value>نوع کاراکترها:</value>
+  </data>
+  <data name="Password_LowerCaseLabel" xml:space="preserve">
+    <value>حروف کوچک (a-z)</value>
+  </data>
+  <data name="Password_UpperCaseLabel" xml:space="preserve">
+    <value>حروف بزرگ (A-Z)</value>
+  </data>
+  <data name="Password_DigitsLabel" xml:space="preserve">
+    <value>اعداد (0-9)</value>
+  </data>
+  <data name="Password_SpecialLabel" xml:space="preserve">
+    <value>نشانه‌های خاص (!@#$...)</value>
+  </data>
+  <data name="Password_GeneratedLabel" xml:space="preserve">
+    <value>رمز تولید شده:</value>
+  </data>
+  <data name="Btn_Generate" xml:space="preserve">
+    <value>تولید رمز</value>
+  </data>
+  <data name="Btn_Copy" xml:space="preserve">
+    <value>کپی</value>
+  </data>
+<data name="Btn_UserActiveDirectory" xml:space="preserve">
+    <value>کاربر اکتیو دایرکتوری</value>
+</data>
+<data name="Btn_PasswordRar" xml:space="preserve">
+    <value>رمز فایل RAR</value>
+</data>
+  <!-- توضیحات دستورات -->
+  <data name="Cmd_Ipconfig" xml:space="preserve">
+    <value>نمایش تنظیمات IP، آدرس MAC، Gateway و DNS سیستم.</value>
+  </data>
+  <data name="Cmd_IpconfigAll" xml:space="preserve">
+    <value>نمایش کامل تنظیمات شبکه شامل DHCP، DNS، آدرس‌های MAC و بیشتر.</value>
+  </data>
+  <data name="Cmd_IpconfigRelease" xml:space="preserve">
+    <value>آزاد کردن آدرس IP فعلی از DHCP.</value>
+  </data>
+  <data name="Cmd_IpconfigRenew" xml:space="preserve">
+    <value>درخواست مجدد آدرس IP از DHCP.</value>
+  </data>
+  <data name="Cmd_IpconfigFlushdns" xml:space="preserve">
+    <value>پاک کردن کش DNS برای رفع خطاهای باز نشدن وب‌سایت‌ها.</value>
+  </data>
+  <data name="Cmd_IpconfigDisplaydns" xml:space="preserve">
+    <value>نمایش محتویات کش DNS (آی‌پی‌های ذخیره‌شده).</value>
+  </data>
+  <data name="Cmd_Ping" xml:space="preserve">
+    <value>تست اتصال به سرور گوگل و بررسی پاسخ‌دهی شبکه.</value>
+  </data>
+  <data name="Cmd_Tracert" xml:space="preserve">
+    <value>نمایش مسیر بسته‌ها تا رسیدن به سرور 8.8.8.8 (DNS گوگل).</value>
+  </data>
+  <data name="Cmd_Nslookup" xml:space="preserve">
+    <value>بررسی آدرس IP دامنه bing.com از طریق DNS.</value>
+  </data>
+  <data name="Cmd_Arp" xml:space="preserve">
+    <value>نمایش جدول ARP شامل آدرس‌های MAC و IP دستگاه‌های متصل.</value>
+  </data>
+  <data name="Cmd_Route" xml:space="preserve">
+    <value>نمایش جدول مسیریابی سیستم و مسیرهای شبکه.</value>
+  </data>
+  <data name="Cmd_WinsockReset" xml:space="preserve">
+    <value>ریست Winsock برای رفع اختلالات اتصال اینترنت و خطاهای نرم‌افزاری (نیاز به ریستارت).</value>
+  </data>
+  <data name="Cmd_IntIpReset" xml:space="preserve">
+    <value>ریست کامل TCP/IP و استک (پشته) شبکه به حالت اولیه (نیاز به ریستارت).</value>
+  </data>
+  <data name="Cmd_IntIpv4Reset" xml:space="preserve">
+    <value>بازنشانی اختصاصی پروتکل IPv4 (نیاز به ریستارت).</value>
+  </data>
+  <data name="Cmd_IntIpv6Reset" xml:space="preserve">
+    <value>بازنشانی اختصاصی پروتکل IPv6 (نیاز به ریستارت).</value>
+  </data>
+  <data name="Cmd_AdvfirewallReset" xml:space="preserve">
+    <value>بازنشانی فایروال ویندوز به تنظیمات کارخانه.</value>
+  </data>
+  <data name="Cmd_InterfaceIpShowConfig" xml:space="preserve">
+    <value>نمایش تنظیمات آی‌پی تمام کارت‌های شبکه.</value>
+  </data>
+  <data name="Cmd_WlanShowProfile" xml:space="preserve">
+    <value>نمایش پروفایل‌های وای‌فای ذخیره‌شده در سیستم.</value>
+  </data>
+  <data name="Cmd_Netstat" xml:space="preserve">
+    <value>نمایش اتصالات شبکه فعلی، ممکن است کند باشد.</value>
+  </data>
+  <data name="Cmd_NetstatAn" xml:space="preserve">
+    <value>نمایش تمام اتصالات و پورت‌ها به‌صورت عددی بدون تبدیل DNS.</value>
+  </data>
+  <data name="Cmd_NetstatB" xml:space="preserve">
+    <value>نمایش برنامه‌هایی که از پورت‌ها استفاده می‌کنند (نیاز به دسترسی ادمین).</value>
+  </data>
+  <data name="Cmd_NetstatO" xml:space="preserve">
+    <value>نمایش شناسه پردازش (PID) برای هر اتصال.</value>
+  </data>
+  <data name="Cmd_NetstatN" xml:space="preserve">
+    <value>نمایش آدرس‌ها بدون تبدیل به نام دامنه.</value>
+  </data>
+  <data name="Cmd_NetstatR" xml:space="preserve">
+    <value>نمایش جدول مسیریابی سیستم (Route Table).</value>
+  </data>
+  <data name="Cmd_NetstatS" xml:space="preserve">
+    <value>نمایش آمار پروتکل‌های شبکه مانند TCP، UDP، ICMP.</value>
+  </data>
+  <data name="Cmd_NetstatE" xml:space="preserve">
+    <value>نمایش آمار Ethernet شامل تعداد بسته‌ها، خطاها و غیره.</value>
+  </data>
+  <data name="Cmd_NetstatEstablished" xml:space="preserve">
+    <value>فیلتر اتصالات فعال که در وضعیت ESTABLISHED هستند.</value>
+  </data>
+  <data name="Cmd_NetstatListen" xml:space="preserve">
+    <value>نمایش پورت‌هایی که در حالت LISTEN هستند.</value>
+  </data>
+  <data name="Cmd_NetstatPort80" xml:space="preserve">
+    <value>نمایش اتصالات روی پورت 80 (HTTP).</value>
+  </data>
+  <data name="Cmd_NetstatPort443" xml:space="preserve">
+    <value>نمایش اتصالات روی پورت 443 (HTTPS).</value>
+  </data>
+  <data name="Cmd_Getmac" xml:space="preserve">
+    <value>نمایش آدرس MAC کارت‌های شبکه سیستم.</value>
+  </data>
+  <data name="Cmd_Hostname" xml:space="preserve">
+    <value>نمایش نام کامپیوتر فعلی.</value>
+  </data>
+  <data name="Cmd_Systeminfo" xml:space="preserve">
+    <value>نمایش اطلاعات کامل سیستم شامل نسخه ویندوز، شبکه و سخت‌افزار.</value>
+  </data>
+</root>

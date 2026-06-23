@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -26,10 +28,11 @@ namespace cmdNet
 {
     public partial class MainWindow : Window
     {
-        private const string LowerChars = "abcdefghijklmnopqrstuvwxyz";
-        private const string UpperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private const string DigitChars = "0123456789";
+        private const string LowerChars = "abcdefghjkmnpqstuvwxyz";
+        private const string UpperChars = "ABCDEFGHJKMNPQRSTUVWXYZ";
+        private const string DigitChars = "123456789";
         private const string SpecialChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+        public ObservableCollection<CommandItem> CommandItems { get; set; } = new ObservableCollection<CommandItem>();
 
         private static readonly Random RandomGenerator = new Random();
 
@@ -40,9 +43,70 @@ namespace cmdNet
             comQuery.SelectedIndex = 0;
             LengthLabel.Content = ((int)LengthSlider.Value).ToString();
 
+            // پر کردن لیست از روی دیکشنری
+            foreach (var item in CommandResourceKeys)
+            {
+                CommandItems.Add(new CommandItem { Command = item.Key, ResourceKey = item.Value });
+            }
+            comQuery.ItemsSource = CommandItems; // به جای allCommands
+            comQuery.DisplayMemberPath = "Command";
+            comQuery.SelectedIndex = 0;
+
 
         }
-        List<string> allCommands;
+        //List<string> allCommands;
+
+        // دیکشنری جدید: کلید = دستور cmd، مقدار = کلید در فایل Resource
+        private readonly Dictionary<string, string> CommandResourceKeys = new Dictionary<string, string>
+{
+    { "ipconfig", "Cmd_Ipconfig" },
+    { "ipconfig /all", "Cmd_IpconfigAll" },
+    { "ipconfig /release", "Cmd_IpconfigRelease" },
+    { "ipconfig /renew", "Cmd_IpconfigRenew" },
+    { "ipconfig /flushdns", "Cmd_IpconfigFlushdns" },
+    { "ipconfig /displaydns", "Cmd_IpconfigDisplaydns" },
+    { "ping google.com", "Cmd_Ping" },
+    { "tracert 8.8.8.8", "Cmd_Tracert" },
+    { "nslookup bing.com", "Cmd_Nslookup" },
+    { "arp -a", "Cmd_Arp" },
+    { "route print", "Cmd_Route" },
+    { "netsh winsock reset", "Cmd_WinsockReset" },
+    { "netsh int ip reset", "Cmd_IntIpReset" },
+    { "netsh int ipv4 reset", "Cmd_IntIpv4Reset" },
+    { "netsh int ipv6 reset", "Cmd_IntIpv6Reset" },
+    { "netsh advfirewall reset", "Cmd_AdvfirewallReset" },
+    { "netsh interface ip show config", "Cmd_InterfaceIpShowConfig" },
+    { "netsh wlan show profile", "Cmd_WlanShowProfile" },
+    { "netstat", "Cmd_Netstat" },
+    { "netstat -an", "Cmd_NetstatAn" },
+    { "netstat -b", "Cmd_NetstatB" },
+    { "netstat -o", "Cmd_NetstatO" },
+    { "netstat -n", "Cmd_NetstatN" },
+    { "netstat -r", "Cmd_NetstatR" },
+    { "netstat -s", "Cmd_NetstatS" },
+    { "netstat -e", "Cmd_NetstatE" },
+    { "netstat -an | find \"ESTABLISHED\"", "Cmd_NetstatEstablished" },
+    { "netstat -an | find \"LISTEN\"", "Cmd_NetstatListen" },
+    { "netstat -an | find \":80\"", "Cmd_NetstatPort80" },
+    { "netstat -an | find \":443\"", "Cmd_NetstatPort443" },
+    { "getmac", "Cmd_Getmac" },
+    { "hostname", "Cmd_Hostname" },
+    { "systeminfo", "Cmd_Systeminfo" }
+};
+
+        private void comQuery_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comQuery.SelectedItem is CommandItem selectedItem)
+            {
+                DescriptionBlock.Text = selectedItem.Description;
+            }
+            else
+            {
+                DescriptionBlock.Text = LanguageManager.Instance.GetString("Description_Default");
+            }
+        }
+
+
         Dictionary<string, string> commandDescriptions = new Dictionary<string, string>
 {
     // اطلاعات کلی سیستم و شبکه
@@ -89,15 +153,33 @@ namespace cmdNet
     { "systeminfo", "نمایش اطلاعات کامل سیستم شامل نسخه ویندوز، شبکه و سخت‌افزار." }
 };
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        //private void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
+
+        //    CommandItems = commandDescriptions.Keys.ToList();
+        //    comQuery.ItemsSource = CommandItems;
+        //    comQuery.SelectedIndex = 0;
+        //}
+
+        private void SetPersian_Click(object sender, RoutedEventArgs e)
         {
-           
-            allCommands = commandDescriptions.Keys.ToList();
-            comQuery.ItemsSource = allCommands;
-            comQuery.SelectedIndex = 0;
+            LanguageManager.Instance.CurrentCulture = new CultureInfo("fa-IR");
+            // به‌روزرسانی توضیحات تمام آیتم‌ها
+            foreach (var item in CommandItems)
+                item.RefreshDescription();
+            // همچنین اگر در DescriptionBlock چیزی نمایش داده می‌شود، آن را به‌روز کن
+            if (comQuery.SelectedItem is CommandItem selected)
+                DescriptionBlock.Text = selected.Description;
         }
 
-
+        private void SetEnglish_Click(object sender, RoutedEventArgs e)
+        {
+            LanguageManager.Instance.CurrentCulture = new CultureInfo("en-US");
+            foreach (var item in CommandItems)
+                item.RefreshDescription();
+            if (comQuery.SelectedItem is CommandItem selected)
+                DescriptionBlock.Text = selected.Description;
+        }
 
 
         #region passoword creator
@@ -243,17 +325,17 @@ namespace cmdNet
                 e.Handled = true; // جلوگیری از رفتار پیش‌فرض
             }
         }
-        private void comQuery_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string selectedCommand = comQuery.SelectedItem as string;
+        //private void comQuery_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    string selectedCommand = comQuery.SelectedItem as string;
 
-            if (!string.IsNullOrWhiteSpace(selectedCommand) && commandDescriptions.ContainsKey(selectedCommand))
-                DescriptionBlock.Text = commandDescriptions[selectedCommand];
-            else
-                DescriptionBlock.Text = "توضیحی برای این دستور موجود نیست.";
+        //    if (!string.IsNullOrWhiteSpace(selectedCommand) && commandDescriptions.ContainsKey(selectedCommand))
+        //        DescriptionBlock.Text = commandDescriptions[selectedCommand];
+        //    else
+        //        DescriptionBlock.Text = "توضیحی برای این دستور موجود نیست.";
 
 
-        }
+        //}
 
 
       

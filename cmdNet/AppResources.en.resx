@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Title and Labels -->
+  <data name="Btn_CmdTabHeader" xml:space="preserve">
+    <value>Network Manager</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>cmdNet Network Manager</value>
+  </data>
+  <data name="Btn_Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="Btn_Persian" xml:space="preserve">
+    <value>Persian</value>
+  </data>
+  <data name="Btn_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Btn_Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Btn_ShowWifi" xml:space="preserve">
+    <value>Show Wi-Fi Pass</value>
+  </data>
+  <data name="Lbl_InsertCommand" xml:space="preserve">
+    <value>Insert Command</value>
+  </data>
+  <data name="Description_Prefix" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="Description_Default" xml:space="preserve">
+    <value>No description available for this command.</value>
+  </data>
+  <data name="Search_TabHeader" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Password_TabHeader" xml:space="preserve">
+    <value>Password Creator</value>
+  </data>
+  <data name="Other_TabHeader" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Btn_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Btn_ClearSearch" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Search_InsertWordLabel" xml:space="preserve">
+    <value>Enter keyword to search</value>
+  </data>
+  <data name="Search_SubDirLabel" xml:space="preserve">
+    <value>Subdirectories</value>
+  </data>
+  <data name="Search_DocxLabel" xml:space="preserve">
+    <value>.docx</value>
+  </data>
+  <data name="Search_PdfLabel" xml:space="preserve">
+    <value>.pdf</value>
+  </data>
+  <data name="Search_TxtLabel" xml:space="preserve">
+    <value>.txt</value>
+  </data>
+  <data name="Password_LengthLabel" xml:space="preserve">
+    <value>Password Length:</value>
+  </data>
+  <data name="Password_CharTypesLabel" xml:space="preserve">
+    <value>Character Types:</value>
+  </data>
+  <data name="Password_LowerCaseLabel" xml:space="preserve">
+    <value>Lowercase (a-z)</value>
+  </data>
+  <data name="Password_UpperCaseLabel" xml:space="preserve">
+    <value>Uppercase (A-Z)</value>
+  </data>
+  <data name="Password_DigitsLabel" xml:space="preserve">
+    <value>Digits (0-9)</value>
+  </data>
+  <data name="Password_SpecialLabel" xml:space="preserve">
+    <value>Special Characters (!@#$...)</value>
+  </data>
+  <data name="Password_GeneratedLabel" xml:space="preserve">
+    <value>Generated Password:</value>
+  </data>
+  <data name="Btn_Generate" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="Btn_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+<data name="Btn_UserActiveDirectory" xml:space="preserve">
+    <value>User Active Directory</value>
+</data>
+<data name="Btn_PasswordRar" xml:space="preserve">
+    <value>RAR Password</value>
+</data>
+  <!-- Command Descriptions -->
+  <data name="Cmd_Ipconfig" xml:space="preserve">
+    <value>Display IP, MAC, Gateway, and DNS settings.</value>
+  </data>
+  <data name="Cmd_IpconfigAll" xml:space="preserve">
+    <value>Display full network settings including DHCP, DNS, MAC addresses, and more.</value>
+  </data>
+  <data name="Cmd_IpconfigRelease" xml:space="preserve">
+    <value>Release current IP address from DHCP.</value>
+  </data>
+  <data name="Cmd_IpconfigRenew" xml:space="preserve">
+    <value>Request a new IP address from DHCP.</value>
+  </data>
+  <data name="Cmd_IpconfigFlushdns" xml:space="preserve">
+    <value>Flush DNS cache to fix website loading issues.</value>
+  </data>
+  <data name="Cmd_IpconfigDisplaydns" xml:space="preserve">
+    <value>Display DNS cache contents (stored IPs).</value>
+  </data>
+  <data name="Cmd_Ping" xml:space="preserve">
+    <value>Test connection to Google server and check network responsiveness.</value>
+  </data>
+  <data name="Cmd_Tracert" xml:space="preserve">
+    <value>Trace route to 8.8.8.8 (Google DNS).</value>
+  </data>
+  <data name="Cmd_Nslookup" xml:space="preserve">
+    <value>Look up IP address of bing.com via DNS.</value>
+  </data>
+  <data name="Cmd_Arp" xml:space="preserve">
+    <value>Display ARP table including MAC and IP addresses of connected devices.</value>
+  </data>
+  <data name="Cmd_Route" xml:space="preserve">
+    <value>Display system routing table and network routes.</value>
+  </data>
+  <data name="Cmd_WinsockReset" xml:space="preserve">
+    <value>Reset Winsock to fix internet connection issues and software errors (requires restart).</value>
+  </data>
+  <data name="Cmd_IntIpReset" xml:space="preserve">
+    <value>Reset TCP/IP stack to default (requires restart).</value>
+  </data>
+  <data name="Cmd_IntIpv4Reset" xml:space="preserve">
+    <value>Reset IPv4 protocol settings (requires restart).</value>
+  </data>
+  <data name="Cmd_IntIpv6Reset" xml:space="preserve">
+    <value>Reset IPv6 protocol settings (requires restart).</value>
+  </data>
+  <data name="Cmd_AdvfirewallReset" xml:space="preserve">
+    <value>Reset Windows Firewall to factory settings.</value>
+  </data>
+  <data name="Cmd_InterfaceIpShowConfig" xml:space="preserve">
+    <value>Display IP configuration for all network adapters.</value>
+  </data>
+  <data name="Cmd_WlanShowProfile" xml:space="preserve">
+    <value>Display saved Wi-Fi profiles on the system.</value>
+  </data>
+  <data name="Cmd_Netstat" xml:space="preserve">
+    <value>Display current network connections (may be slow).</value>
+  </data>
+  <data name="Cmd_NetstatAn" xml:space="preserve">
+    <value>Display all connections and ports numerically without DNS resolution.</value>
+  </data>
+  <data name="Cmd_NetstatB" xml:space="preserve">
+    <value>Show programs using ports (requires admin rights).</value>
+  </data>
+  <data name="Cmd_NetstatO" xml:space="preserve">
+    <value>Display process ID (PID) for each connection.</value>
+  </data>
+  <data name="Cmd_NetstatN" xml:space="preserve">
+    <value>Display addresses without domain name resolution.</value>
+  </data>
+  <data name="Cmd_NetstatR" xml:space="preserve">
+    <value>Display routing table.</value>
+  </data>
+  <data name="Cmd_NetstatS" xml:space="preserve">
+    <value>Display protocol statistics (TCP, UDP, ICMP).</value>
+  </data>
+  <data name="Cmd_NetstatE" xml:space="preserve">
+    <value>Display Ethernet statistics (packets, errors, etc.).</value>
+  </data>
+  <data name="Cmd_NetstatEstablished" xml:space="preserve">
+    <value>Filter active connections in ESTABLISHED state.</value>
+  </data>
+  <data name="Cmd_NetstatListen" xml:space="preserve">
+    <value>Display ports in LISTEN state.</value>
+  </data>
+  <data name="Cmd_NetstatPort80" xml:space="preserve">
+    <value>Display connections on port 80 (HTTP).</value>
+  </data>
+  <data name="Cmd_NetstatPort443" xml:space="preserve">
+    <value>Display connections on port 443 (HTTPS).</value>
+  </data>
+  <data name="Cmd_Getmac" xml:space="preserve">
+    <value>Display MAC addresses of network adapters.</value>
+  </data>
+  <data name="Cmd_Hostname" xml:space="preserve">
+    <value>Display current computer name.</value>
+  </data>
+  <data name="Cmd_Systeminfo" xml:space="preserve">
+    <value>Display complete system information including Windows version, network, and hardware.</value>
+  </data>
+</root>
