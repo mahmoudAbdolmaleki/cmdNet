@@ -207,4 +207,46 @@
   <data name="Cmd_Systeminfo" xml:space="preserve">
     <value>نمایش اطلاعات کامل سیستم شامل نسخه ویندوز، شبکه و سخت‌افزار.</value>
   </data>
+  <data name="PassRar_Title" xml:space="preserve">
+    <value>تست رمز فایل RAR</value>
+</data>
+<data name="PassRar_GroupSelectRar" xml:space="preserve">
+    <value>۱. انتخاب فایل RAR</value>
+</data>
+<data name="PassRar_GroupSelectWords" xml:space="preserve">
+    <value>۲. انتخاب فایل کلمات پایه</value>
+</data>
+<data name="PassRar_GroupLoadedWords" xml:space="preserve">
+    <value>۳. کلمات بارگذاری شده</value>
+</data>
+<data name="PassRar_GroupSettings" xml:space="preserve">
+    <value>۴. تنظیمات تولید ترکیبات</value>
+</data>
+<data name="PassRar_GroupResult" xml:space="preserve">
+    <value>۵. نتیجه تست</value>
+</data>
+<data name="PassRar_BtnOpen" xml:space="preserve">
+    <value>باز کردن</value>
+</data>
+<data name="PassRar_BtnStart" xml:space="preserve">
+    <value>شروع تست</value>
+</data>
+<data name="PassRar_BtnStop" xml:space="preserve">
+    <value>توقف</value>
+</data>
+<data name="PassRar_BtnSave" xml:space="preserve">
+    <value>ذخیره نتیجه</value>
+</data>
+<data name="PassRar_ChkSingleWords" xml:space="preserve">
+    <value>کلمات تکی</value>
+</data>
+<data name="PassRar_ChkDoubleComb" xml:space="preserve">
+    <value>ترکیبات دوتایی (کلمه اول + کلمه دوم)</value>
+</data>
+<data name="PassRar_ChkDoubleCombReverse" xml:space="preserve">
+    <value>ترکیبات دوتایی معکوس (کلمه دوم + کلمه اول)</value>
+</data>
+<data name="PassRar_ChkSelfComb" xml:space="preserve">
+    <value>تکرار کلمه با خودش (word+word)</value>
+</data>
 </root>

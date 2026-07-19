@@ -102,4 +102,31 @@ public class ExcelService
             fileName,
             package.GetAsByteArray());
     }
+
+
+    public void ExportUsers(
+    string fileName,
+    List<UserResultModel> data)
+    {
+        using var package = new ExcelPackage();
+
+        var ws = package.Workbook.Worksheets.Add("AD Users");
+
+        ws.Cells[1, 1].Value = "FirstName";
+        ws.Cells[1, 2].Value = "LastName";
+        ws.Cells[1, 3].Value = "UserName";
+
+        int row = 2;
+
+        foreach (var item in data)
+        {
+            ws.Cells[row, 1].Value = item.FirstName;
+            ws.Cells[row, 2].Value = item.LastName;
+            ws.Cells[row, 3].Value = item.UserName;
+
+            row++;
+        }
+
+        File.WriteAllBytes(fileName, package.GetAsByteArray());
+    }
 }

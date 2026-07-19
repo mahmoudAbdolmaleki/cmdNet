@@ -72,6 +72,20 @@ namespace cmdNet
                     OnPropertyChanged(nameof(SearchDocxLabel));
                     OnPropertyChanged(nameof(SearchPdfLabel));
                     OnPropertyChanged(nameof(SearchTxtLabel));
+                    OnPropertyChanged(nameof(PassRar_Title));
+                    OnPropertyChanged(nameof(PassRar_GroupSelectRar));
+                    OnPropertyChanged(nameof(PassRar_GroupSelectWords));
+                    OnPropertyChanged(nameof(PassRar_GroupLoadedWords));
+                    OnPropertyChanged(nameof(PassRar_GroupSettings));
+                    OnPropertyChanged(nameof(PassRar_GroupResult));
+                    OnPropertyChanged(nameof(PassRar_BtnOpen));
+                    OnPropertyChanged(nameof(PassRar_BtnStart));
+                    OnPropertyChanged(nameof(PassRar_BtnStop));
+                    OnPropertyChanged(nameof(PassRar_BtnSave));
+                    OnPropertyChanged(nameof(PassRar_ChkSingleWords));
+                    OnPropertyChanged(nameof(PassRar_ChkDoubleComb));
+                    OnPropertyChanged(nameof(PassRar_ChkDoubleCombReverse));
+                    OnPropertyChanged(nameof(PassRar_ChkSelfComb));
                 }
             }
         }
@@ -113,6 +127,21 @@ namespace cmdNet
         public string SearchDocxLabel => GetString("Search_DocxLabel");
         public string SearchPdfLabel => GetString("Search_PdfLabel");
         public string SearchTxtLabel => GetString("Search_TxtLabel");
+
+        public string PassRar_Title => GetString("PassRar_Title");
+        public string PassRar_GroupSelectRar => GetString("PassRar_GroupSelectRar");
+        public string PassRar_GroupSelectWords => GetString("PassRar_GroupSelectWords");
+        public string PassRar_GroupLoadedWords => GetString("PassRar_GroupLoadedWords");
+        public string PassRar_GroupSettings => GetString("PassRar_GroupSettings");
+        public string PassRar_GroupResult => GetString("PassRar_GroupResult");
+        public string PassRar_BtnOpen => GetString("PassRar_BtnOpen");
+        public string PassRar_BtnStart => GetString("PassRar_BtnStart");
+        public string PassRar_BtnStop => GetString("PassRar_BtnStop");
+        public string PassRar_BtnSave => GetString("PassRar_BtnSave");
+        public string PassRar_ChkSingleWords => GetString("PassRar_ChkSingleWords");
+        public string PassRar_ChkDoubleComb => GetString("PassRar_ChkDoubleComb");
+        public string PassRar_ChkDoubleCombReverse => GetString("PassRar_ChkDoubleCombReverse");
+        public string PassRar_ChkSelfComb => GetString("PassRar_ChkSelfComb");
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) =>

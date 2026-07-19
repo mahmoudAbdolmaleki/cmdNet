@@ -381,6 +381,27 @@ public partial class InsertUser : Window
             $"{firstName}.{lastName}";
     }
 
+    private void ExcelReportForOu_Click(object sender, RoutedEventArgs e)
+    {
+        ActiveDirectoryService activeDirectoryService = new ActiveDirectoryService(_vm.AdminUsername,txtPassword.Password);
+        var result = activeDirectoryService.GetUsersFromOu(_vm.DomainController);
+        if (result != null)       
+            {
+            SaveFileDialog saveDialog = new();
+
+            saveDialog.Filter =
+                "Excel Files (*.xlsx)|*.xlsx";
+
+            saveDialog.FileName =
+                $"ADUsersReport_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+
+            if (saveDialog.ShowDialog() != true)
+                return;
+            ExcelService excelService = new ExcelService();
+            excelService.ExportUsers(saveDialog.FileName, result);
+        }
+    }
+
     private void ComboBox_Loaded(object sender, RoutedEventArgs e)
     {
         var cb = (ComboBox)sender;

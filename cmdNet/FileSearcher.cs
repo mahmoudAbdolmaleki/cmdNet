@@ -43,23 +43,19 @@ namespace cmdNet
                 return File.ReadAllText(filePath);
             }
         }
-        public void Search(string folderPath, string keyword, bool includeSubfolders,
-                     bool searchDocx, bool searchPdf, long maxSizeBytes)
+        public void Search(
+     string folderPath,
+     string keyword,
+     bool includeSubfolders,
+     List<string> extensions,
+     long maxSizeBytes)
         {
-            var alwaysExtensions = new[]
-            {
-        ".txt", ".html", ".htm", ".css", ".js", ".ts", ".json", ".xml",
-        ".md", ".csv", ".yml", ".yaml", ".ini", ".log", ".config", ".bat", ".ps1", ".sh"
-    };
+            var extensionSet = new HashSet<string>(
+                extensions.Select(x => x.ToLower()));
 
-            var conditionalExtensions = new List<string>();
-            if (searchDocx) conditionalExtensions.Add(".docx");
-            if (searchPdf) conditionalExtensions.Add(".pdf");
+            List<string> files = new();
+            Stack<string> pending = new();
 
-            var allExtensions = alwaysExtensions.Concat(conditionalExtensions).ToList();
-
-            List<string> files = new List<string>();
-            var pending = new Stack<string>();
             pending.Push(folderPath);
 
             while (pending.Count > 0)
@@ -76,16 +72,12 @@ namespace cmdNet
                         {
                             try
                             {
-                                Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly); // تست دسترسی
+                                Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
                                 pending.Push(dir);
                             }
                             catch
                             {
-                                //if (!dir.EndsWith("System Volume Information", StringComparison.OrdinalIgnoreCase))
-                                    //FileError?.Invoke($"⛔ دسترسی به پوشه ممنوع است: {dir}");
-
-
-                                //FileError?.Invoke($"⛔ دسترسی به پوشه ممنوع است: {dir}");
+                                // در صورت نیاز پیام خطا نمایش بده
                             }
                         }
                     }
@@ -97,16 +89,15 @@ namespace cmdNet
             }
 
             files = files
-                .Where(f => allExtensions.Contains(Path.GetExtension(f).ToLower()))
+                .Where(f => extensionSet.Contains(Path.GetExtension(f).ToLower()))
                 .Where(f => maxSizeBytes == 0 || new FileInfo(f).Length <= maxSizeBytes)
                 .ToList();
+
             if (files.Count == 0)
             {
-                //ProgressChanged?.Invoke(100);
                 SearchCompleted?.Invoke();
                 return;
             }
-
 
             int totalFiles = files.Count;
             int processedCount = 0;
@@ -118,49 +109,57 @@ namespace cmdNet
                     string ext = Path.GetExtension(file).ToLower();
                     string content = "";
 
-                    if (alwaysExtensions.Contains(ext))
+                    switch (ext)
                     {
-                        content = File.ReadAllText(file);
-                    }
-                    else if (ext == ".docx")
-                    {
-                        using var doc = WordprocessingDocument.Open(file, false);
-                        content = doc.MainDocumentPart.Document.Body.InnerText;
-                    }
-                    else if (ext == ".pdf")
-                    {
-                        using var pdf = PdfDocument.Open(file);
-                        var sb = new StringBuilder();
-                        foreach (var page in pdf.GetPages())
-                            sb.AppendLine(page.Text);
-                        content = sb.ToString();
+                        case ".docx":
+                            using (var doc = WordprocessingDocument.Open(file, false))
+                            {
+                                if (doc.MainDocumentPart?.Document?.Body != null)
+                                    content = doc.MainDocumentPart.Document.Body.InnerText;
+                            }
+                            break;
+
+                        case ".pdf":
+                            using (var pdf = PdfDocument.Open(file))
+                            {
+                                StringBuilder sb = new();
+
+                                foreach (var page in pdf.GetPages())
+                                    sb.AppendLine(page.Text);
+
+                                content = sb.ToString();
+                            }
+                            break;
+
+                        default:
+                            content = File.ReadAllText(file);
+                            break;
                     }
 
-                    if (content.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+                    if (content.Contains(keyword,
+                        StringComparison.OrdinalIgnoreCase))
                     {
                         FileMatched?.Invoke(file);
                     }
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    FileError?.Invoke($"⛔ دسترسی غیرمجاز به فایل: {file}");
+                    FileError?.Invoke($"⛔ دسترسی غیرمجاز: {file}");
                 }
                 catch (Exception ex)
                 {
-                    FileError?.Invoke($"❌ خطا در {file}: {ex.Message}");
+                    FileError?.Invoke($"❌ {file}\r\n{ex.Message}");
                 }
+
                 int current = Interlocked.Increment(ref processedCount);
-                double percent = (double)current / totalFiles * 100;
-                ProgressChanged?.Invoke(percent);
 
-                if (current == totalFiles)
-                {
-                    SearchCompleted?.Invoke();
-                }
-
-                
+                ProgressChanged?.Invoke(current * 100.0 / totalFiles);
             });
+
+            SearchCompleted?.Invoke();
         }
+
+        
 
         //    public async Task Search(string folderPath, string keyword, bool includeSubfolders,
         //                       bool searchDocx, bool searchPdf, long maxSizeBytes)

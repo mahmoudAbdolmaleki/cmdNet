@@ -115,8 +115,12 @@
        Style="{StaticResource ModernButtonStyle}"
         Click="ExportReport_Click"/>
 
-
-            </StackPanel>
+            <Button Content="Excel Report ou"
+             Name="ExcelReportForOu"
+             
+Style="{StaticResource ModernButtonStyle}"
+ Click="ExcelReportForOu_Click"/>
+        </StackPanel>
 
             <ProgressBar Grid.Row="3"
                      Height="25"

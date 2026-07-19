@@ -207,4 +207,46 @@
   <data name="Cmd_Systeminfo" xml:space="preserve">
     <value>Display complete system information including Windows version, network, and hardware.</value>
   </data>
+  <data name="PassRar_Title" xml:space="preserve">
+    <value>RAR Password Tester</value>
+</data>
+<data name="PassRar_GroupSelectRar" xml:space="preserve">
+    <value>1. Select RAR File</value>
+</data>
+<data name="PassRar_GroupSelectWords" xml:space="preserve">
+    <value>2. Select Wordlist File</value>
+</data>
+<data name="PassRar_GroupLoadedWords" xml:space="preserve">
+    <value>3. Loaded Words</value>
+</data>
+<data name="PassRar_GroupSettings" xml:space="preserve">
+    <value>4. Combination Settings</value>
+</data>
+<data name="PassRar_GroupResult" xml:space="preserve">
+    <value>5. Test Result</value>
+</data>
+<data name="PassRar_BtnOpen" xml:space="preserve">
+    <value>Open</value>
+</data>
+<data name="PassRar_BtnStart" xml:space="preserve">
+    <value>Start Test</value>
+</data>
+<data name="PassRar_BtnStop" xml:space="preserve">
+    <value>Stop</value>
+</data>
+<data name="PassRar_BtnSave" xml:space="preserve">
+    <value>Save Result</value>
+</data>
+<data name="PassRar_ChkSingleWords" xml:space="preserve">
+    <value>Single Words</value>
+</data>
+<data name="PassRar_ChkDoubleComb" xml:space="preserve">
+    <value>Two-Word Combinations (First+Second)</value>
+</data>
+<data name="PassRar_ChkDoubleCombReverse" xml:space="preserve">
+    <value>Two-Word Combinations Reverse (Second+First)</value>
+</data>
+<data name="PassRar_ChkSelfComb" xml:space="preserve">
+    <value>Self Combination (word+word)</value>
+</data>
 </root>

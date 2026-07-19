@@ -17,11 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UglyToad.PdfPig.Content;
 //using System.Windows.Forms;
-
-
-
-
 
 
 namespace cmdNet
@@ -332,14 +329,41 @@ foreach ($name in $profiles) {
                 }
                 if (path != "" )
                 {
-                    bool searchPdf = CheckPdf.IsChecked == true;
+                    //bool searchPdf = CheckPdf.IsChecked == true;
 
-                    bool searchWord = CheckDocx.IsChecked == true;
+                    //bool searchWord = CheckDocx.IsChecked == true;
 
-                    bool searchSubDir = CheckSubDir.IsChecked == true;
+                    //bool searchSubDir = CheckSubDir.IsChecked == true;
+                    List<string> extensions = new();
 
-                   
-                    PrintResultLive(path,word,searchSubDir,searchPdf,searchWord,500000,"");
+                    foreach (CheckBox cb in FileTypesPanel.Children.OfType<CheckBox>())
+                    {
+                        if (cb.IsChecked == true && cb.Tag != null)
+                        {
+                            extensions.AddRange(
+                                cb.Tag.ToString()!
+                                  .Split(',', StringSplitOptions.RemoveEmptyEntries));
+                        }
+                    }
+                    if (!string.IsNullOrWhiteSpace(TxtExtensions.Text))
+                    {
+                        var customExtensions = TxtExtensions.Text
+                            .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                            .Select(x => x.Trim())
+                            .Select(x => x.StartsWith(".") ? x.ToLower() : "." + x.ToLower());
+
+                        extensions.AddRange(customExtensions);
+                    }
+                    //delete repated
+                    extensions = extensions
+    .Distinct(StringComparer.OrdinalIgnoreCase)
+    .ToList();
+
+                    //string extensionFilter =
+                    //    string.Join(", ", extensions.Select(x => $"'{x}'"));
+
+                    bool subDir = CheckSubDir.IsChecked==true;
+                    PrintResultLive(path,word, extensions, subDir, 500000,"");
                     //PrintResult(path, word, outputPanelSearch, true);
                 }
             }
@@ -510,10 +534,10 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
             stackPanelPrint.Children.Insert(0, expander);
             return expander;
         }
+      
 
-
-        private void PrintResultLive(string folderPath, string keyword, bool includeSubfolders,
-                             bool searchDocx, bool searchPdf, long maxSizeBytes, string title = "")
+        private void PrintResultLive(string folderPath, string keyword,List<string> extension, bool includeSubFloder,
+                            long maxSizeBytes,string title = "")
         {
             Expander expander1 = new Expander();
             TextBox textBox = new TextBox();
@@ -575,7 +599,7 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
 
             Task.Run(async () =>
             {
-                searcher.Search(folderPath, keyword, includeSubfolders, searchDocx, searchPdf, maxSizeBytes);
+                searcher.Search(folderPath, keyword, includeSubFloder,extension, maxSizeBytes);
             });
         }
 

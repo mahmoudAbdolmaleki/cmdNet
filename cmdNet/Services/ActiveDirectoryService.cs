@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.DirectoryServices;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,6 +22,56 @@ public class ActiveDirectoryService
         _username = username;
         _password = password;
     }
+  public  List<UserResultModel> GetUsersFromOu(string ou)
+    {
+        List<UserResultModel> users = new();
+        using var entry = new DirectoryEntry(
+    ou,
+    _username,
+    _password);
+        //using var entry = new DirectoryEntry(ouPath);
+
+
+        using var searcher = new DirectorySearcher(entry);
+        searcher.Filter = "(objectCategory=user)";
+        //searcher.Filter = "(objectClass=*)";
+        searcher.PageSize = 1000;
+        //searcher.SearchScope = SearchScope.OneLevel;
+
+        searcher.PropertiesToLoad.Add("givenName");
+        searcher.PropertiesToLoad.Add("sn");
+        searcher.PropertiesToLoad.Add("sAMAccountName");
+        //using var searcher = new DirectorySearcher(entry);
+
+        //searcher.Filter = "(objectCategory=person)";
+        //searcher.PageSize = 1000;
+
+        //searcher.PropertiesToLoad.Add("givenName");
+        //searcher.PropertiesToLoad.Add("sn");
+        //searcher.PropertiesToLoad.Add("sAMAccountName");
+
+        foreach (SearchResult result in searcher.FindAll())
+        {
+            users.Add(new UserResultModel
+            {
+                FirstName = result.Properties["givenName"].Count > 0
+                    ? result.Properties["givenName"][0].ToString()
+                    : "",
+
+                LastName = result.Properties["sn"].Count > 0
+                    ? result.Properties["sn"][0].ToString()
+                    : "",
+
+                UserName = result.Properties["sAMAccountName"].Count > 0
+                    ? result.Properties["sAMAccountName"][0].ToString()
+                    : ""
+            });
+        }
+        return users;
+       
+    }
+
+
     public void ResetPassword(string _directory,
     string userName,
     string newPassword)

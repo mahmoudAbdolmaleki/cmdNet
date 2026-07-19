@@ -38,8 +38,9 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="MaxHeight" Value="60"/>
 
-            <Setter Property="Template">
+        <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="border"
