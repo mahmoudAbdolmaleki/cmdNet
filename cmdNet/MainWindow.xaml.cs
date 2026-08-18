@@ -1,4 +1,5 @@
-﻿using System;
+﻿using cmdNet.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -25,10 +26,10 @@ namespace cmdNet
 {
     public partial class MainWindow : Window
     {
-        private const string LowerChars = "abcdefghjkmnpqstuvwxyz";
-        private const string UpperChars = "ABCDEFGHJKMNPQRSTUVWXYZ";
-        private const string DigitChars = "23456789";
-        private const string SpecialChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+        private readonly string LowerChars = PasswordGenerator.lower;
+        private readonly string UpperChars = PasswordGenerator.upper;
+        private readonly string DigitChars = PasswordGenerator.numbers;
+        private readonly string SpecialChars = PasswordGenerator.SpecialChars;
         public ObservableCollection<CommandItem> CommandItems { get; set; } = new ObservableCollection<CommandItem>();
 
         private static readonly Random RandomGenerator = new Random();

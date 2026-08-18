@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
 	
 	
 	<PropertyGroup>
@@ -16,6 +17,7 @@
 		
 		<!--<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>-->
 		<ApplicationIcon>cmdNet.ico</ApplicationIcon>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
 	
 		
 	</PropertyGroup>

@@ -156,9 +156,10 @@ public partial class InsertUser : Window
 
     private async void Execute_Click(object sender, RoutedEventArgs e)
     {
+        string result = "";
         try
         {
-            string result = "";
+           
             string adminPassword =
                 txtPassword.Password;
 
@@ -255,21 +256,7 @@ public partial class InsertUser : Window
 
 
                     }
-                    TxtService txtService = new TxtService();
-
-                    SaveFileDialog saveDialog = new();
-
-                    saveDialog.Filter =
-                        "txt Files (*.txt)|*.txt";
-
-                    saveDialog.FileName =
-                        $"ADUsersReport_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
-
-                    if (saveDialog.ShowDialog() != true)
-                        return;
-                    result = txtService.WriteFileTxt(saveDialog.FileName, _vm.Results.ToList());
-                    _creauteUser = true;
-                    ExcelReport.IsEnabled = _creauteUser;
+                   
                 }
                 catch (Exception ex)
                 {
@@ -304,6 +291,22 @@ public partial class InsertUser : Window
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
         }
+        TxtService txtService = new TxtService();
+
+        SaveFileDialog saveDialog = new();
+
+        saveDialog.Filter =
+            "txt Files (*.txt)|*.txt";
+        
+
+        saveDialog.FileName =
+            $"ADUsersReport_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+
+        if (saveDialog.ShowDialog() != true)
+            return;
+        result = txtService.WriteFileTxt(saveDialog.FileName, _vm.Results.ToList());
+        _creauteUser = true;
+        ExcelReport.IsEnabled = _creauteUser;
     }
 
 

@@ -7,11 +7,15 @@ namespace cmdNet.Services;
 
 public static class PasswordGenerator
 {
+   
+    
+    public static  string lower = "abcdefghjkmnpqstuvwxyz";
+    public static  string upper = "ABCDEFGHJKMNPQRSTUVWXYZ";
+    public static  string numbers = "23456789";
+    public static string SpecialChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
     public static string Generate(int length = 16)
     {
-        const string lower = "abcdefghijklmnopqrstuvwxyz";
-        const string upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const string numbers = "0123456789";
+        
 
         string all = lower + upper + numbers;
 
@@ -33,4 +37,8 @@ public static class PasswordGenerator
                 RandomNumberGenerator.GetInt32(Int32.MaxValue))
             .ToArray());
     }
+
+  
+
+
 }
