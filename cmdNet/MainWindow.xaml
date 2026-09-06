@@ -132,8 +132,8 @@
                             <UniformGrid Columns="5" Name="FileTypesPanel" Grid.Row="1" Margin="0 0 0 10">
                                     <CheckBox Content="TXT"  Tag=".txt" IsChecked="True"/>
                                     <CheckBox Content="DOCX" Tag=".docx,.doc" IsChecked="True"/>
-                                   
-                                        <CheckBox Content="HTML" Tag=".html,.htm" />
+                                    <CheckBox Content="Excel" Tag=".xlsx,.xls"/>
+                                    <CheckBox Content="HTML" Tag=".html,.htm" />
                                         <CheckBox Content="CSS"  Tag=".css" />
                                         <CheckBox Content="JS"   Tag=".js" />
                                         <CheckBox Content="TS"   Tag=".ts" />

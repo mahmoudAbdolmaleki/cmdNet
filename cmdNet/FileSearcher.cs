@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
+using OfficeOpenXml;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -129,6 +130,49 @@ namespace cmdNet
 
                                 content = sb.ToString();
                             }
+                            break;
+
+                        case ".xlsx":
+                        case ".xls":
+
+                            using (var package =
+                                   new ExcelPackage(new FileInfo(file)))
+                            {
+                                StringBuilder sb = new();
+
+                                foreach (var worksheet
+                                         in package.Workbook.Worksheets)
+                                {
+                                    if (worksheet.Dimension == null)
+                                        continue;
+
+                                    for (int row =
+                                         worksheet.Dimension.Start.Row;
+                                         row <= worksheet.Dimension.End.Row;
+                                         row++)
+                                    {
+                                        for (int col =
+                                             worksheet.Dimension.Start.Column;
+                                             col <= worksheet.Dimension.End.Column;
+                                             col++)
+                                        {
+                                            var value =
+                                                worksheet.Cells[row, col].Text;
+
+                                            if (!string.IsNullOrEmpty(value))
+                                            {
+                                                sb.Append(value);
+                                                sb.Append(' ');
+                                            }
+                                        }
+
+                                        sb.AppendLine();
+                                    }
+                                }
+
+                                content = sb.ToString();
+                            }
+
                             break;
 
                         default:
