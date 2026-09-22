@@ -23,7 +23,7 @@
                   Grid.Row="0"
                   Margin="0,0,0,10">
 
-                <Grid Margin="10">
+                <Grid Margin="5">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>
@@ -34,7 +34,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                       
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Domain Controller:"
@@ -48,6 +48,7 @@
                            VerticalAlignment="Center"/>
 
                     <TextBox Grid.Row="1"
+                            
                          Grid.Column="1"
                          Text="{Binding AdminUsername}" />
 

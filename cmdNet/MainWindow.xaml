@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:cmdNet"
         mc:Ignorable="d"
-        Height="550" Width="800" 
-        FontSize="16" FontFamily="Arial Narrow"
+        Height="500"  Width="720" 
+       MinHeight="500"  MinWidth="720" 
+        FontSize="15" FontFamily="Arial Narrow"
         WindowStartupLocation="CenterScreen"
-        Title="{Binding Source={x:Static local:LanguageManager.Instance}, Path=AppTitle}">
+        Title="{Binding Source={x:Static local:LanguageManager.Instance}, Path=AppTitle}"  SizeChanged="Window_SizeChanged"
+        >
 
-    <Grid>
+    <Grid Name="MainGrid" >
         
         <TabControl>
             <!-- ========== تب اول: CMD ========== -->
@@ -68,8 +70,8 @@
                                  Grid.Row="1" KeyDown="insertQuery_KeyDown" FontSize="16" Margin="10,5" />
 
                         <Border Grid.Row="2" BorderBrush="Gray" BorderThickness="1" Margin="10,5">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <StackPanel x:Name="outputPanel" Margin="10" />
+                            <ScrollViewer  VerticalScrollBarVisibility="Auto">
+                                <StackPanel x:Name="outputPanel" Margin="10" Focusable="True" IsHitTestVisible="True"/>
                             </ScrollViewer>
                         </Border>
                     </Grid>

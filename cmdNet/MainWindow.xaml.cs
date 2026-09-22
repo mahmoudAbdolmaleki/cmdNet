@@ -30,6 +30,7 @@ namespace cmdNet
         private readonly string UpperChars = PasswordGenerator.upper;
         private readonly string DigitChars = PasswordGenerator.numbers;
         private readonly string SpecialChars = PasswordGenerator.SpecialChars;
+        private const int fontSizeDelete = 10;
         public ObservableCollection<CommandItem> CommandItems { get; set; } = new ObservableCollection<CommandItem>();
 
         private static readonly Random RandomGenerator = new Random();
@@ -52,6 +53,13 @@ namespace cmdNet
            comQuery.SelectedIndex =-1;
 
 
+        }
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            double scale = ActualWidth / 1000.0;
+            scale = Math.Clamp(scale, 1, 1.5);
+
+            FontSize = 15 * scale;
         }
         //List<string> allCommands;
 
@@ -474,15 +482,18 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
                 Text = title,
                 Foreground = new SolidColorBrush(headerColor),
                 FontWeight = FontWeights.Bold,
-                FontSize = 14
+                //FontSize = 14
             };
 
             var deleteButton = new Button
             {
 
                 Content = "❌",
+                FontSize = fontSizeDelete,
                 Style = (Style)FindResource("DeleteButtonStyle"),
-                Margin = new Thickness(10, 0, 0, 0)
+                Margin = new Thickness(10),
+                //Width = 20,
+                //Height=20
 
             };
 
@@ -497,7 +508,7 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
             {
                 Text = "⏳ در حال اجرا",
                 Foreground = Brushes.Gray,
-                FontSize = 13,
+                //FontSize = 13,
                 Margin = new Thickness(5),
                 TextWrapping = TextWrapping.Wrap,
                 IsReadOnly = true,
@@ -616,23 +627,25 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
                 string output = await Task.Run(() => ExecuteCmd(query, powerShell));
 
 
-                expander.Content = new TextBlock
+                expander.Content = new TextBox
                 {
                     Text = output,
                     Foreground = Brushes.Black,
                     TextWrapping = TextWrapping.Wrap,
-                    FontSize = 14,
+                    //FontSize = 14,
                     Margin = new Thickness(5)
                 };
             }
             catch (Exception ex)
             {
-                expander.Content = new TextBlock
+                expander.Content = new TextBox
                 {
+                    IsReadOnly = true,
+                 
                     Text = $"❌ خطا در اجرا:\n{ex.Message}",
                     Foreground = Brushes.Red,
                     TextWrapping = TextWrapping.Wrap,
-                    FontSize = 14,
+                   FontSize = fontSizeDelete,
                     Margin = new Thickness(5)
                 };
             }
@@ -655,7 +668,7 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
                     Text = output,
                     Foreground = Brushes.Black,
                     TextWrapping = TextWrapping.Wrap,
-                    FontSize = 14,
+                    //FontSize = 14,
                     Margin = new Thickness(5)
                 };
             }
@@ -666,7 +679,7 @@ Where-Object { $_.Extension -in '.php', '.html', '.htm', '.css',
                     Text = $"❌ خطا در اجرا:\n{ex.Message}",
                     Foreground = Brushes.Red,
                     TextWrapping = TextWrapping.Wrap,
-                    FontSize = 14,
+                   FontSize =fontSizeDelete,
                     Margin = new Thickness(5)
                 };
             }
