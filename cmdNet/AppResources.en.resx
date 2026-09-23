@@ -65,6 +65,9 @@
   <data name="Search_SubDirLabel" xml:space="preserve">
     <value>Subdirectories</value>
   </data>
+  <data name="Custom_Extensions" xml:space="preserve">
+    <value>Custom Extensions</value>
+  </data>
   <data name="Search_DocxLabel" xml:space="preserve">
     <value>.docx</value>
   </data>

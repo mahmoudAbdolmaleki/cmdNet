@@ -24,7 +24,7 @@ using UglyToad.PdfPig.Content;
 
 namespace cmdNet
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : BaseWindow
     {
         private readonly string LowerChars = PasswordGenerator.lower;
         private readonly string UpperChars = PasswordGenerator.upper;
@@ -54,13 +54,13 @@ namespace cmdNet
 
 
         }
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            double scale = ActualWidth / 1000.0;
-            scale = Math.Clamp(scale, 1, 1.5);
+        //private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        //{
+        //    double scale = ActualWidth / 1000.0;
+        //    scale = Math.Clamp(scale, 1, 1.5);
 
-            FontSize = 15 * scale;
-        }
+        //    FontSize = 15 * scale;
+        //}
         //List<string> allCommands;
 
         // دیکشنری جدید: کلید = دستور cmd، مقدار = کلید در فایل Resource

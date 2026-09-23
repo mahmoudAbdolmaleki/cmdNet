@@ -22,7 +22,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace cmdNet;
 
-public partial class InsertUser : Window
+public partial class InsertUser : BaseWindow
 {
     private readonly MainViewModel _vm;//=   new();
     bool _creauteUser, _analize;

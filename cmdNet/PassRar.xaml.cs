@@ -13,7 +13,7 @@ using System.Windows.Controls;
 
 namespace cmdNet
 {
-    public partial class PassRar : Window
+    public partial class PassRar : BaseWindow
     {
         private List<string> baseWords = new List<string>();
         private List<string> passwordsToTest = new List<string>();

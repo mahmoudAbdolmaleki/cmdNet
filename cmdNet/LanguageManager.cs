@@ -69,6 +69,7 @@ namespace cmdNet
                     OnPropertyChanged(nameof(BtnCopy));
                     OnPropertyChanged(nameof(SearchInsertWordLabel));
                     OnPropertyChanged(nameof(SearchSubDirLabel));
+                    OnPropertyChanged(nameof(CustomExtensions));
                     OnPropertyChanged(nameof(SearchDocxLabel));
                     OnPropertyChanged(nameof(SearchPdfLabel));
                     OnPropertyChanged(nameof(SearchTxtLabel));
@@ -124,6 +125,7 @@ namespace cmdNet
         public string BtnCopy => GetString("Btn_Copy");
         public string SearchInsertWordLabel => GetString("Search_InsertWordLabel");
         public string SearchSubDirLabel => GetString("Search_SubDirLabel");
+        public string CustomExtensions => GetString("Custom_Extensions");
         public string SearchDocxLabel => GetString("Search_DocxLabel");
         public string SearchPdfLabel => GetString("Search_PdfLabel");
         public string SearchTxtLabel => GetString("Search_TxtLabel");
